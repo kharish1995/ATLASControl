@@ -1,5 +1,23 @@
-<sdf version='1.6'>
+<sdf version='1.5'>
   <world name='default'>
+    <plugin filename="libVRCPlugin.so" name="vrc_plugin">
+  <atlas>
+    <model_name>atlas</model_name>
+    <pin_link>utorso</pin_link>
+  </atlas>
+  <drc_vehicle>
+    <model_name>golf_cart</model_name>
+    <seat_link>chassis</seat_link>
+  </drc_vehicle>
+  <drc_fire_hose>
+    <fire_hose_model>fire_hose</fire_hose_model>
+    <coupling_link>coupling</coupling_link>
+    <standpipe_model>standpipe</standpipe_model>
+    <spout_link>standpipe</spout_link>
+    <thread_pitch>-1000</thread_pitch>
+    <coupling_relative_pose>1.17038e-05 -0.125623 0.35 -0.0412152 -1.57078 1.61199</coupling_relative_pose>
+  </drc_fire_hose>
+</plugin>
     <light name='sun' type='directional'>
       <cast_shadows>1</cast_shadows>
       <pose frame=''>0 0 10 0 -0 0</pose>
@@ -254,73 +272,142 @@
         <kinematic>0</kinematic>
         <gravity>1</gravity>
       </link>
-      <pose frame=''>0 -1 0 0 -0 0</pose>
+      <pose frame=''>2.49023 0 0 0 -0 0</pose>
     </model>
-    <model name='coke_can'>
-      <link name='link'>
-        <inertial>
-          <pose frame=''>-0.01 -0.012 0.15 0 -0 0</pose>
-          <mass>0.39</mass>
-          <inertia>
-            <ixx>0.00058</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>0.00058</iyy>
-            <iyz>0</iyz>
-            <izz>0.00019</izz>
-          </inertia>
-        </inertial>
-        <collision name='collision'>
-          <pose frame=''>0 0 -0.46 0 -0 0</pose>
+    <model name='defaultModel_0'>
+      <pose frame=''>2.51839 -1 0.5 0 -0 0</pose>
+      <link name='defaultModel_0::custom_0'>
+        <visual name='defaultModel_0::custom_0_visual'>
+          <pose frame=''>0 0 0 3.11725 -0 0</pose>
           <geometry>
             <mesh>
-              <uri>model://coke_can/meshes/coke_can.dae</uri>
+              <uri>/home/harish/.gazebo/models/container/meshes/container.STL</uri>
+              <scale>1 1 1</scale>
             </mesh>
           </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='defaultModel_0::custom_0_collision'>
+          <geometry>
+            <mesh>
+              <uri>/home/harish/.gazebo/models/container/meshes/container.STL</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <pose frame=''>0 0 0 3.11725 -0 0</pose>
+          <max_contacts>10</max_contacts>
           <surface>
-            <friction>
-              <ode>
-                <mu>1</mu>
-                <mu2>1</mu2>
-              </ode>
-            </friction>
             <contact>
-              <ode>
-                <kp>1e+07</kp>
-                <kd>1</kd>
-                <min_depth>0.001</min_depth>
-                <max_vel>0.1</max_vel>
-              </ode>
+              <ode/>
             </contact>
             <bounce/>
+            <friction>
+              <ode/>
+            </friction>
           </surface>
-          <max_contacts>10</max_contacts>
         </collision>
-        <visual name='visual'>
-          <pose frame=''>0 0 -0.46 0 -0 0</pose>
-          <geometry>
-            <mesh>
-              <uri>model://coke_can/meshes/coke_can.dae</uri>
-            </mesh>
-          </geometry>
-        </visual>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <gravity>1</gravity>
         <self_collide>0</self_collide>
         <kinematic>0</kinematic>
-        <gravity>1</gravity>
+        <inertial>
+          <mass>1</mass>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
       </link>
-      <pose frame=''>2 0 0 0 -0 0</pose>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+    </model>
+    <model name='defaultModel_0_0'>
+      <pose frame=''>3 0 0.5 0 -0 0</pose>
+      <link name='defaultModel_0::custom_0'>
+        <visual name='defaultModel_0::custom_0_visual'>
+          <pose frame=''>0 0 0 3.11725 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>/home/harish/.gazebo/models/container/meshes/container.STL</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Blue</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='defaultModel_0::custom_0_collision'>
+          <geometry>
+            <mesh>
+              <uri>/home/harish/.gazebo/models/container/meshes/container.STL</uri>
+              <scale>1 1 1</scale>
+            </mesh>
+          </geometry>
+          <pose frame=''>0 0 0 3.11725 -0 0</pose>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <inertial>
+          <mass>1</mass>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+        </inertial>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
     </model>
     <state world_name='default'>
-      <sim_time>81 19000000</sim_time>
-      <real_time>81 368498180</real_time>
-      <wall_time>1475774420 150256740</wall_time>
-      <model name='coke_can'>
-        <pose frame=''>2.00355 0.015959 1.01103 -0.014764 0.003544 -0.000358</pose>
-        <link name='link'>
-          <pose frame=''>2.00355 0.015959 1.01103 -0.014764 0.003544 -0.000358</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0.022529 0.014238 -0.000945 -0.000156 0.000229 6e-06</acceleration>
-          <wrench>0.008786 0.005553 -0.000368 0 -0 0</wrench>
+      <sim_time>105 822000000</sim_time>
+      <real_time>106 178113694</real_time>
+      <wall_time>1477621512 821516835</wall_time>
+      <model name='defaultModel_0'>
+        <pose frame=''>2.51638 -0.547764 1.16555 0.000787 -0.005488 0.031612</pose>
+        <link name='defaultModel_0::custom_0'>
+          <pose frame=''>2.51638 -0.547764 1.16555 0.000787 -0.005488 0.031612</pose>
+          <velocity>0.005396 0.013248 -0.007088 -0.087991 0.035836 1.4e-05</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -9.8 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='defaultModel_0_0'>
+        <pose frame=''>2.5847 -0.065436 1.16574 0.054172 -0.014187 -0.001636</pose>
+        <link name='defaultModel_0::custom_0'>
+          <pose frame=''>2.5847 -0.065436 1.16574 0.054172 -0.014187 -0.001636</pose>
+          <velocity>0.000506 0.003252 0.009387 -0.021574 0.003358 1.4e-05</velocity>
+          <acceleration>0.041584 0.076153 19.5869 -0.505296 0.275875 2.88463e-17</acceleration>
+          <wrench>0.041584 0.076153 19.5869 0 -0 0</wrench>
         </link>
       </model>
       <model name='ground_plane'>
@@ -333,9 +420,9 @@
         </link>
       </model>
       <model name='table'>
-        <pose frame=''>1.97248 -0.136282 0 0 0 -1.51939</pose>
+        <pose frame=''>2.49023 0 0 0 0 -1.56277</pose>
         <link name='link'>
-          <pose frame=''>1.97248 -0.136282 0 0 0 -1.51939</pose>
+          <pose frame=''>2.49023 0 0 0 0 -1.56277</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -345,27 +432,9 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose frame=''>5 -5 2 0 0.275643 2.35619</pose>
+        <pose frame=''>5.35274 -4.6994 1.86966 0 0.275643 2.35619</pose>
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    <plugin filename="libVRCPlugin.so" name="vrc_plugin">
-    <atlas>
-      <model_name>atlas</model_name>
-      <pin_link>utorso</pin_link>
-    </atlas>
-    <drc_vehicle>
-      <model_name>golf_cart</model_name>
-      <seat_link>chassis</seat_link>
-    </drc_vehicle>
-    <drc_fire_hose>
-      <fire_hose_model>fire_hose</fire_hose_model>
-      <coupling_link>coupling</coupling_link>
-      <standpipe_model>standpipe</standpipe_model>
-      <spout_link>standpipe</spout_link>
-      <thread_pitch>-1000</thread_pitch>
-      <coupling_relative_pose>1.17038e-05 -0.125623 0.35 -0.0412152 -1.57078 1.61199</coupling_relative_pose>
-    </drc_fire_hose>
-  </plugin>
   </world>
 </sdf>
