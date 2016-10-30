@@ -1,8 +1,0 @@
-prefix=/home/harish/ATLAS/install
-
-Name: Moveit
-Description: Description of Moveit
-Version: 0.2.0
-Cflags: 
-Libs: -L/home/harish/ATLAS/install/lib 
-Requires: 
