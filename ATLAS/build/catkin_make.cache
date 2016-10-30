@@ -1,0 +1,2 @@
+ros/moveit
+-DCATKIN_DEVEL_PREFIX=/home/harish/ATLAS/devel -DCMAKE_INSTALL_PREFIX=/home/harish/ATLAS/install -G Unix Makefiles
