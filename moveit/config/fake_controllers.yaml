@@ -1,8 +1,0 @@
-controller_list:
-  - name: fake_right_arm_controller
-    joints:
-      - r_arm_shx
-      - r_arm_ely
-      - r_arm_elx
-      - r_arm_uwy
-      - r_arm_mwx
