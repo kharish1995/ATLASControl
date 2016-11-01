@@ -1,0 +1,8 @@
+prefix=/usr/local
+
+Name: atlas_interface
+Description: Description of atlas_interface
+Version: 0.0.0
+Cflags: 
+Libs: -L/usr/local/lib -latlas_interface
+Requires: roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs

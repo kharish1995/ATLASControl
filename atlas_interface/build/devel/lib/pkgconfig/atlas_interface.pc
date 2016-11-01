@@ -1,0 +1,8 @@
+prefix=/home/harish/atlas_interface/build/devel
+
+Name: atlas_interface
+Description: Description of atlas_interface
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/harish/atlas_interface/build/devel/lib -latlas_interface
+Requires: roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs
