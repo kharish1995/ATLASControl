@@ -16,7 +16,7 @@ Clone the git repository
     
     cd atlas_interface
     gedit CMakeLists.txt
-    Add the follwoing line to the file after the find_package lines,
+    Modify the following line giving the location to where you unzipped AtlasSimInterface_3.0.2
     
     set(ENV{ATLAS_ROBOT_INTERFACE_ROOT} "/home/yourname/AtlasSimInterface_3.0.2")
 
