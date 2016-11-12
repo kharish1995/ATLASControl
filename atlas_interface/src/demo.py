@@ -85,11 +85,11 @@ class Demo:
         slight_movement_msg.position[AtlasState.neck_ry] = -0.1
         slight_movement_msg.velocity = [0.0] * self.NUM_JOINTS
         slight_movement_msg.effort = [0.0] * self.NUM_JOINTS
-        slight_movement_msg.kp_position = [20.0, 4000.0, 2000.0, 20.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0]
+        slight_movement_msg.kp_position = [0.0, 4000.0, 2000.0, 20.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0]
         slight_movement_msg.ki_position = [0.0] * self.NUM_JOINTS
         slight_movement_msg.kd_position = [0.0] * self.NUM_JOINTS
         # Bump up kp_velocity to reduce the jerkiness of the transition
-        stand_prep_msg.kp_velocity = [50.0] * self.NUM_JOINTS
+        stand_prep_msg.kp_velocity = [1000.0] * self.NUM_JOINTS
         slight_movement_msg.i_effort_min = [0.0] * self.NUM_JOINTS
         slight_movement_msg.i_effort_max = [0.0] * self.NUM_JOINTS 
         # Set k_effort = [1] for the joints that we want to control.

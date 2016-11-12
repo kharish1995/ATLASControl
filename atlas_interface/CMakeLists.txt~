@@ -6,18 +6,21 @@ project(atlas_interface)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
   atlas_msgs
   osrf_msgs
   rosgraph_msgs
   sensor_msgs
+  orocos_kdl
   std_msgs
 )
 
 find_package(orocos_kdl REQUIRED)
 find_package(cmake_modules REQUIRED)
 find_package(Eigen REQUIRED)
+set(ENV{ATLAS_ROBOT_INTERFACE_ROOT} "/home/harish/AtlasSimInterface_3.0.2")
 
-if(NOT DEFINED /home/harish/AtlasSimInterface_3.0.2)
+if(NOT DEFINED ENV{ATLAS_ROBOT_INTERFACE_ROOT})
   message(FATAL_ERROR "You must set ATLAS_ROBOT_INTERFACE_ROOT to the directory
 where you unpacked the AtlasSimInterface distribution.")
 endif()
@@ -26,7 +29,7 @@ endif()
 set(ATLAS_VERSION_MAJOR 3)
 set(ATLAS_VERSION_MINOR 0)
 set(ATLAS_VERSION_PATCH 0)
-file(GLOB ATLAS_VERSION_FILE RELATIVE $/home/harish/AtlasSimInterface_3.0.2 $/home/harish/AtlasSimInterface_3.0.2/AtlasSimInterface-version-*)
+file(GLOB ATLAS_VERSION_FILE RELATIVE $ENV{ATLAS_ROBOT_INTERFACE_ROOT} $ENV{ATLAS_ROBOT_INTERFACE_ROOT}/AtlasSimInterface-version-*)
 if(NOT ${ATLAS_ROBOT_INTERFACE_ROOT})
   message(WARNING "Couldn't find AtlasSimInterface-version-* file; assuming version is ${ATLAS_VERSION_MAJOR}.${ATLAS_VERSION_MINOR}.${ATLAS_VERSION_PATCH}")
 else()
@@ -47,7 +50,7 @@ add_definitions(-DATLAS_VERSION_MAJOR=${ATLAS_VERSION_MAJOR} -DATLAS_VERSION_MIN
 catkin_package(
   # INCLUDE_DIRS include
   LIBRARIES atlas_interface
-  CATKIN_DEPENDS roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs
+  CATKIN_DEPENDS roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs rospy
   DEPENDS system_lib
 )
 
@@ -60,11 +63,11 @@ include_directories(
   ${Eigen_INCLUDE_DIRS}
   ${catkin_INCLUDE_DIRS}
   ${Boost_INCLUDE_DIRS}
-  $/home/harish/AtlasSimInterface_3.0.2/include
+  $ENV{ATLAS_ROBOT_INTERFACE_ROOT}/include
 )
 
 link_directories(
-  $/home/harish/AtlasSimInterface_3.0.2/lib64
+  $ENV{ATLAS_ROBOT_INTERFACE_ROOT}/lib64
 )
 
 add_library(atlas_interface src/atlas_interface.cpp)
@@ -72,7 +75,7 @@ target_link_libraries(atlas_interface ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES
 # AtlasSimInterface apparently depends on zlib
 target_link_libraries(atlas_interface z)
 
-add_executable(example examples/example.cpp)
+add_executable(example src/example.cpp)
 target_link_libraries(example ${catkin_LIBRARIES} atlas_interface)
 
 #############

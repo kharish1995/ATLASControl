@@ -6,10 +6,12 @@ project(atlas_interface)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  rospy
   atlas_msgs
   osrf_msgs
   rosgraph_msgs
   sensor_msgs
+  orocos_kdl
   std_msgs
 )
 
@@ -48,7 +50,7 @@ add_definitions(-DATLAS_VERSION_MAJOR=${ATLAS_VERSION_MAJOR} -DATLAS_VERSION_MIN
 catkin_package(
   # INCLUDE_DIRS include
   LIBRARIES atlas_interface
-  CATKIN_DEPENDS roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs
+  CATKIN_DEPENDS roscpp atlas_msgs osrf_msgs rosgraph_msgs sensor_msgs std_msgs rospy
   DEPENDS system_lib
 )
 
@@ -73,7 +75,7 @@ target_link_libraries(atlas_interface ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES
 # AtlasSimInterface apparently depends on zlib
 target_link_libraries(atlas_interface z)
 
-add_executable(example examples/example.cpp)
+add_executable(example src/example.cpp)
 target_link_libraries(example ${catkin_LIBRARIES} atlas_interface)
 
 #############
@@ -84,6 +86,6 @@ install(TARGETS atlas_interface
   )
 
 # Install Gazebo Scripts
-install(TARGETS example
+install(TARGETS atlas_interface
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   )
