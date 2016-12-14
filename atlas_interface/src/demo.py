@@ -3,7 +3,7 @@
 from __future__ import print_function
 
 import roslib
-roslib.load_manifest('control_mode_switch')
+roslib.load_manifest('atlas_interface')
 import rospy
 import time
 from atlas_msgs.msg import AtlasCommand, AtlasSimInterfaceCommand, AtlasSimInterfaceState, AtlasState, AtlasBehaviorStepData
@@ -29,7 +29,7 @@ class Demo:
         self.imu_sub = rospy.Subscriber('atlas/imu', 
           Imu, self.imu_cb)
         # Wait for subscribers to hook up, lest they miss our commands
-        time.sleep(2.0)
+        time.sleep(10.0)
 
     def state_cb(self, msg):
         self.asis_msg = msg
@@ -50,7 +50,7 @@ class Demo:
         # Publish and give time to take effect
         print('[USER] Going to stand prep position...')
         self.ac_pub.publish(stand_prep_msg)
-        time.sleep(2.0)
+        time.sleep(5.0)
 
         # Step 2: Request BDI stand mode
         stand_msg = AtlasSimInterfaceCommand()
@@ -82,26 +82,38 @@ class Demo:
         slight_movement_msg.header.stamp = rospy.Time.now()
         # Start with 0.0 and set values for the joints that we want to control
         slight_movement_msg.position = [0.0] * self.NUM_JOINTS
-        slight_movement_msg.position[AtlasState.neck_ry] = -0.1
-        slight_movement_msg.velocity = [0.0] * self.NUM_JOINTS
-        slight_movement_msg.effort = [0.0] * self.NUM_JOINTS
+        #slight_movement_msg.position[AtlasState.neck_ry] = -0.1
+        #slight_movement_msg.position[AtlasState.r_arm_usy] = -0.7 #-1
+        #slight_movement_msg.position[AtlasState.r_arm_ely] = -1
+        #slight_movement_msg.position[AtlasState.r_arm_elx] = 1 #-1
+        #slight_movement_msg.position[AtlasState.r_arm_uwy] = 0
+        #slight_movement_msg.position[AtlasState.r_arm_shx] = -0.17 #-0.174535 
+        slight_movement_msg.position[AtlasState.r_arm_mwx] = -0.1;
+        slight_movement_msg.velocity = [0.1] * self.NUM_JOINTS
+        slight_movement_msg.effort = [1.0] * self.NUM_JOINTS
         slight_movement_msg.kp_position = [0.0, 4000.0, 2000.0, 20.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 5.0, 100.0, 2000.0, 1000.0, 900.0, 300.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0, 2000.0, 1000.0, 200.0, 200.0, 50.0, 100.0]
-        slight_movement_msg.ki_position = [0.0] * self.NUM_JOINTS
+        slight_movement_msg.ki_position = [1.0] * self.NUM_JOINTS
         slight_movement_msg.kd_position = [0.0] * self.NUM_JOINTS
         # Bump up kp_velocity to reduce the jerkiness of the transition
-        stand_prep_msg.kp_velocity = [1000.0] * self.NUM_JOINTS
+        stand_prep_msg.kp_velocity = [100.0] * self.NUM_JOINTS
         slight_movement_msg.i_effort_min = [0.0] * self.NUM_JOINTS
         slight_movement_msg.i_effort_max = [0.0] * self.NUM_JOINTS 
         # Set k_effort = [1] for the joints that we want to control.
         # BDI has control of the other joints
         slight_movement_msg.k_effort = [0] * self.NUM_JOINTS
-        slight_movement_msg.k_effort[AtlasState.neck_ry] = 255
+        #slight_movement_msg.k_effort[AtlasState.neck_ry] = 255
+        #slight_movement_msg.k_effort[AtlasState.l_arm_ely] = 255
+        #slight_movement_msg.k_effort[AtlasState.l_arm_elx] = 255
+        #slight_movement_msg.k_effort[AtlasState.r_arm_uwy] = 255
+        #slight_movement_msg.k_effort[AtlasState.r_arm_shx] = 255
+        slight_movement_msg.k_effort[AtlasState.r_arm_mwx] = 255
+        #slight_movement_msg.k_effort[AtlasState.r_arm_usy] = 255
         # Publish and give time to take effect
         print('[USER/BDI] Command neck and arms...')
         self.ac_pub.publish(slight_movement_msg)
-        time.sleep(2.0)
-
-       
+        time.sleep(5.0)
+        
+        
 if __name__ == '__main__':
     rospy.init_node('control_mode_switch')
     d = Demo()

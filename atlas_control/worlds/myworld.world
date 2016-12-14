@@ -282,7 +282,7 @@
           <geometry>
             <mesh>
               <uri>/home/harish/.gazebo/models/container/meshes/container.STL</uri>
-              <scale>1 1 1</scale>
+              <scale>2 1 1</scale>
             </mesh>
           </geometry>
           <material>
@@ -389,8 +389,8 @@
       <allow_auto_disable>1</allow_auto_disable>
     </model>
     <state world_name='default'>
-      <sim_time>105 822000000</sim_time>
-      <real_time>106 178113694</real_time>
+      <sim_time>100 8220000000</sim_time>
+      <real_time>10 178113</real_time>
       <wall_time>1477621512 821516835</wall_time>
       <model name='defaultModel_0'>
         <pose frame=''>2.51638 -0.547764 1.16555 0.000787 -0.005488 0.031612</pose>

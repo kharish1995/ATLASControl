@@ -61,15 +61,14 @@ main(int argc, char** argv)
         printf("Failed to get data from robot\n");
       }
       // Every once in a while, print.
-      else if (!(cnt % 100))
-      {
-        printf("Joint positions:\n");
-        for (int i=0; i<Atlas::NUM_JOINTS; i++)
-          printf(" %f", data.j[i].q);
-        printf("\n");
-      }
+      //else if (!(cnt % 100))
+      //{
+        //printf("Joint positions:\n");
+        //for (int i=0; i<Atlas::NUM_JOINTS; i++)
+          //printf(" %f", data.j[i].q);
+        //printf("\n");
+      //}
     }
-
     AtlasControlDataToRobot command;
     ec = atlas_interface.send_control_data_to_robot(command, &packet_seq_id);
     if (ec != NO_ERRORS)

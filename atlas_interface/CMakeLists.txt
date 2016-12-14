@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
   orocos_kdl
   std_msgs
+  sandia_hand_msgs
 )
 
 find_package(orocos_kdl REQUIRED)
@@ -77,6 +78,8 @@ target_link_libraries(atlas_interface z)
 
 add_executable(example src/example.cpp)
 target_link_libraries(example ${catkin_LIBRARIES} atlas_interface)
+add_executable(control src/control.cpp)
+target_link_libraries(control ${catkin_LIBRARIES} atlas_interface)
 
 #############
 ## Install ##

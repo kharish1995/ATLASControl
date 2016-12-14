@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: atlas_description
+    relative_path: robots/atlas_sandia_hands.urdf.xacro
+  SRDF:
+    relative_path: config/atlas.srdf
+  CONFIG:
+    generated_timestamp: 1481428872
