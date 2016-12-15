@@ -82,7 +82,7 @@ class Demo:
         slight_movement_msg.header.stamp = rospy.Time.now()
         # Start with 0.0 and set values for the joints that we want to control
         slight_movement_msg.position = [0.0] * self.NUM_JOINTS
-        #slight_movement_msg.position[AtlasState.neck_ry] = -0.1
+        slight_movement_msg.position[AtlasState.neck_ry] = -0.1
         #slight_movement_msg.position[AtlasState.r_arm_usy] = -0.7 #-1
         #slight_movement_msg.position[AtlasState.r_arm_ely] = -1
         #slight_movement_msg.position[AtlasState.r_arm_elx] = 1 #-1
@@ -101,7 +101,7 @@ class Demo:
         # Set k_effort = [1] for the joints that we want to control.
         # BDI has control of the other joints
         slight_movement_msg.k_effort = [0] * self.NUM_JOINTS
-        #slight_movement_msg.k_effort[AtlasState.neck_ry] = 255
+        slight_movement_msg.k_effort[AtlasState.neck_ry] = 255
         #slight_movement_msg.k_effort[AtlasState.l_arm_ely] = 255
         #slight_movement_msg.k_effort[AtlasState.l_arm_elx] = 255
         #slight_movement_msg.k_effort[AtlasState.r_arm_uwy] = 255

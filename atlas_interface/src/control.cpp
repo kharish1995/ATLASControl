@@ -38,6 +38,7 @@ if(Fnet <= Fref)
            e.data = 26500 + 7000*i/10000;
            ROS_INFO_STREAM(e.data);
            pub2.publish(e);
+           sleep(0.1);
         }
 }
 ros::spinOnce();
